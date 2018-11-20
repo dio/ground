@@ -20,7 +20,7 @@ resource "aws_service_discovery_service" "nginx" {
 
     dns_records {
       ttl  = 10
-      type = "SRV"
+      type = "A"
     }
 
     routing_policy = "MULTIVALUE"
@@ -70,7 +70,6 @@ resource "aws_ecs_service" "nginx" {
 
   service_registries {
     registry_arn = "${aws_service_discovery_service.nginx.arn}"
-    port         = 80
   }
 
   desired_count                      = 1

@@ -22,7 +22,7 @@ module "ecs_cluster" {
   key_name = "box"
 
   security_groups = [
-    "${module.security_groups.internal_elb}",
+    "${module.security_groups.internal_lb}",
     "${module.security_groups.internal_ssh}",
   ]
 
@@ -48,7 +48,7 @@ module "nginx" {
   subnets      = "${module.vpc.internal_subnets}"
 
   security_groups = [
-    "${module.security_groups.internal_elb}",
+    "${module.security_groups.internal_lb}",
     "${module.security_groups.internal_ssh}",
   ]
 }

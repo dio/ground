@@ -17,8 +17,8 @@ variable "cidr_block" {
   default     = "10.0.0.0/16"
 }
 
-resource "aws_security_group" "internal_elb" {
-  name        = "${format("%s-%s-internal-elb", var.name, var.environment)}"
+resource "aws_security_group" "internal_lb" {
+  name        = "${format("%s-%s-internal-lb", var.name, var.environment)}"
   vpc_id      = "${var.vpc_id}"
   description = "Allows internal ELB traffic"
 
@@ -41,8 +41,8 @@ resource "aws_security_group" "internal_elb" {
   }
 }
 
-resource "aws_security_group" "external_elb" {
-  name        = "${format("%s-%s-external-elb", var.name, var.environment)}"
+resource "aws_security_group" "external_lb" {
+  name        = "${format("%s-%s-external-lb", var.name, var.environment)}"
   vpc_id      = "${var.vpc_id}"
   description = "Allows external ELB traffic"
 
@@ -128,10 +128,10 @@ output "internal_ssh" {
   value = "${aws_security_group.internal_ssh.id}"
 }
 
-output "internal_elb" {
-  value = "${aws_security_group.internal_elb.id}"
+output "internal_lb" {
+  value = "${aws_security_group.internal_lb.id}"
 }
 
-output "external_elb" {
-  value = "${aws_security_group.external_elb.id}"
+output "external_lb" {
+  value = "${aws_security_group.external_lb.id}"
 }

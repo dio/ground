@@ -29,7 +29,7 @@ module "ecs_cluster" {
   vpc_zone_identifier = "${module.vpc.internal_subnets}"
 }
 
-// Services here
+// TODO(dio): Add services here
 // DAEMON, REPLICA
 // egress, ingress
 // internet -> lb -> envoy

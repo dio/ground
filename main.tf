@@ -18,7 +18,8 @@ module "bastion" {
 }
 
 module "ecs_cluster" {
-  source = "./ecs/cluster"
+  source   = "./ecs/cluster"
+  key_name = "box"
 
   security_groups = [
     "${module.security_groups.internal_elb}",
@@ -35,7 +36,7 @@ module "ecs_cluster" {
 // process -> envoy -> nat
 
 resource "aws_service_discovery_private_dns_namespace" "local" {
-  name        = "stack.local"
+  name        = "ground.local"
   description = "local"
   vpc         = "${module.vpc.id}"
 }
